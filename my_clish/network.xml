@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+<VIEW name="network_view" prompt='# '>
+      
+      <NAMESPACE ref="infoview"
+                 help="true"
+		 prefix="do"
+                 completion="true"/>
+
+	<COMMAND name="do"
+		help="import prefix">
+	</COMMAND>
+
+	 <COMMAND name="show-ip"
+        	  help="show current Network configuration">
+		<ACTION> 
+			ifconfig 
+		</ACTION>
+         </COMMAND>
+
+	 <COMMAND name="pci-bind"
+        	  help="show pci bind status with drivers">
+		<ACTION> 
+			dpdk_nic_bind -s
+		</ACTION>
+         </COMMAND>
+	 
+	 <COMMAND name="ping"
+        	  help="uses ICMP protocol to check if destination is reachable">
+                  <PARAM
+		  	 name="dest"
+             	         help="destination IP address"
+                         ptype ="IP_ADDR" /> 
+
+		  <ACTION>
+		  	 ping ${dest}
+		  </ACTION>
+         </COMMAND>
+	 <COMMAND name="show-arp"
+	 	  help="show arp table">
+		  <ACTION> arp </ACTION>
+         </COMMAND>
+		  
+	 <COMMAND name="exit"
+	 	  help="go back to info-view"
+		  view="infoview">
+          </COMMAND>
+</VIEW>
+</CLISH_MODULE>

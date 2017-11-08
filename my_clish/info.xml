@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+<VIEW name="infoview" prompt="#">
+
+	 <COMMAND name="clear"
+        	  help="Used for echoing">
+			<ACTION> 
+			echo -n "Enter y to clear screen y/n"
+			read  v
+			if [ $v = "y" ]
+			then
+			   clear
+			else
+			    echo "Clear not selected"
+			    echo
+			fi
+			</ACTION> 
+         </COMMAND>
+ 	
+	 <COMMAND name="exit"
+                   help="Exit from the CLI">
+                  <ACTION builtin="clish_close"/>
+         </COMMAND>
+
+
+	 <COMMAND name="network"
+	 	  help="change view from info -view to network-view"
+		  view="network_view">
+	 </COMMAND>
+
+   </VIEW>
+</CLISH_MODULE>
